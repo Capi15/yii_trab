@@ -14,7 +14,7 @@ use yii\web\IdentityInterface;
  * @property string $auth_key
  * @property string $access_token
  */
-class User extends \yii\db\ActiveRecord implements IdentityInterface
+class Users extends \yii\db\ActiveRecord implements IdentityInterface
 {
     /**
      * {@inheritdoc}

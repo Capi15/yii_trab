@@ -12,7 +12,7 @@ use Yii;
  * @property int|null $telefone
  * @property int $idCliente
  *
- * @property User $idCliente0
+ * @property Users $idCliente0
  */
 class Contacts extends \yii\db\ActiveRecord
 {
@@ -33,7 +33,7 @@ class Contacts extends \yii\db\ActiveRecord
         return [
             ['telefone', 'integer'],
             [['email'], 'string', 'max' => 30],
-            [['idCliente'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['idCliente' => 'id']],
+            [['idCliente'], 'exist', 'skipOnError' => true, 'targetClass' => Users::className(), 'targetAttribute' => ['idCliente' => 'id']],
         ];
     }
 
@@ -56,7 +56,7 @@ class Contacts extends \yii\db\ActiveRecord
      */
     public function getIdCliente0()
     {
-        return $this->hasOne(User::className(), ['id' => 'idCliente']);
+        return $this->hasOne(Users::className(), ['id' => 'idCliente']);
     }
 
     public function setIdCliente($value)

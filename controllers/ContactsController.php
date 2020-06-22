@@ -7,6 +7,7 @@ use http\Client\Curl\User;
 use Yii;
 use app\models\Contacts;
 use app\models\ContactsSearch;
+use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -29,6 +30,15 @@ class ContactsController extends Controller
                 'actions' => [
                     'delete' => ['POST'],
                 ],
+            ],
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['@']
+                    ]
+                ]
             ],
         ];
     }
@@ -138,7 +148,7 @@ class ContactsController extends Controller
     public function getUser()
     {
         if ($this->_user === false) {
-            $this->_user = \app\models\User::findByUsername($this->username);
+            $this->_user = \app\models\Users::findByUsername($this->username);
         }
 
         return $this->_user;
